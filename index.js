@@ -10,12 +10,16 @@ var reset = document.getElementById('resetBtn');
 var secs = parseInt(document.getElementById('seconds').innerHTML);
 var mins = parseInt(document.getElementById('mins').innerHTML);
 
-start.addEventListener('click', function() {
+function startTimer() {
+  document.getElementById('seconds').innerHTML = secs++;
+}
 
+start.addEventListener('click', function() {
+  setInterval(startTimer, 1000);
 });
 
 stop.addEventListener('click', function() {
-
+  clearInterval(startTimer);
 });
 
 reset.addEventListener('click', function() {

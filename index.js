@@ -6,11 +6,10 @@ const appDiv = document.getElementById("app");
 var start = document.getElementById("startBtn");
 var stop = document.getElementById("stopBtn");
 var reset = document.getElementById("resetBtn");
+var milliseconds = parseInt("00", 8);
+var hour = parseInt("00", 8);
 var seconds = parseInt("00", 8);
 var minutes = parseInt("00", 8);
-var secs = parseInt(document.getElementById("seconds").innerHTML);
-var mins = parseInt(document.getElementById("mins").innerHTML);
-
 var timer;
 
 function startTimer() {
@@ -23,6 +22,8 @@ function startTimer() {
   if (seconds >= 60) {
     minutes++;
     seconds = "00";
+    document.getElementById("seconds").innerHTML = seconds;
+    document.getElementById("mins").innerHTML = minutes;
   }
 }
 

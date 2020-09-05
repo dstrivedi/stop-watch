@@ -13,22 +13,28 @@ var minutes = parseInt("00", 8);
 var timer;
 
 function startTimer() {
-  seconds++;
-  if (seconds <= 9) {
-    document.getElementById("seconds").innerHTML = "0" + seconds;
-  } else {
-    document.getElementById("seconds").innerHTML = seconds;
+  milliseconds++;
+  formatTime(milliseconds);
+
+  if(milliseconds >= 100) {
+    seconds++;
+    milliseconds = "00";
+    document.getElementById("milliseconds").innerHTML = milliseconds;
+    formatTime(seconds);
   }
-  if (seconds >= 60) {
-    minutes++;
-    seconds = "00";
-    document.getElementById("seconds").innerHTML = seconds;
-    document.getElementById("mins").innerHTML = minutes;
+ 
+}
+
+function formatTime(unit) {
+  if(unit <= 0) {
+    document.getElementById(unit).innerHTML = "0" + unit;
+  } else {
+    document.getElementById(unit).innerHTML = unit;
   }
 }
 
 start.addEventListener("click", function() {
-  timer = setInterval(startTimer, 1000);
+  timer = setInterval(startTimer, 10);
 });
 
 stop.addEventListener("click", function() {
@@ -39,6 +45,10 @@ reset.addEventListener("click", function() {
   clearInterval(timer);
   seconds = "00";
   minutes = "00";
+  milliseconds = "00";
+  hour="00";
   document.getElementById("seconds").innerHTML = seconds;
   document.getElementById("mins").innerHTML = minutes;
+  document.getElementById("milliseconds").innerHTML = milliseconds;
+  document.getElementById("hour").innerHTML = hour;
 });

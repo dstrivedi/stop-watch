@@ -10,19 +10,22 @@ var reset = document.getElementById('resetBtn');
 var secs = parseInt(document.getElementById('seconds').innerHTML);
 var mins = parseInt(document.getElementById('mins').innerHTML);
 
+var timer;
+
 function startTimer() {
   document.getElementById('seconds').innerHTML = secs++;
 }
 
 start.addEventListener('click', function() {
-  setInterval(startTimer, 1000);
+  timer = setInterval(startTimer, 1000);
 });
 
 stop.addEventListener('click', function() {
-  clearInterval(startTimer);
+  clearInterval(timer);
 });
 
 reset.addEventListener('click', function() {
-
+  document.getElementById('seconds').innerHTML = "00";
+  document.getElementById('mins').innerHTML = "00";
 });
 

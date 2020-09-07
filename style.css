@@ -21,7 +21,7 @@ button {
 }
 
 button:hover {
-  box-shadow: 5px 5px 5px;
+  box-shadow: 5px 5px 15px white;
 }
 
 @media(max-width: 700px) {
